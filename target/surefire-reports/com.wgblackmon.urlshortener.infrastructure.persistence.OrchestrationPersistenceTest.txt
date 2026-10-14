@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.wgblackmon.urlshortener.infrastructure.persistence.OrchestrationPersistenceTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.276 s -- in com.wgblackmon.urlshortener.infrastructure.persistence.OrchestrationPersistenceTest

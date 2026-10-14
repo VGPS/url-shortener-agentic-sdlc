@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.wgblackmon.urlshortener.infrastructure.persistence.ClickEventAdapterTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 18.20 s -- in com.wgblackmon.urlshortener.infrastructure.persistence.ClickEventAdapterTest

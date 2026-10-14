@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.wgblackmon.urlshortener.domain.service.UrlShorteningServiceTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.685 s -- in com.wgblackmon.urlshortener.domain.service.UrlShorteningServiceTest

@@ -1,0 +1,11 @@
+C:\workspaces\cSchwabAssignment\src\test\java\com\wgblackmon\urlshortener\domain\OrchestrationDomainTest.java
+C:\workspaces\cSchwabAssignment\src\test\java\com\wgblackmon\urlshortener\domain\OrchestrationEngineTest.java
+C:\workspaces\cSchwabAssignment\src\test\java\com\wgblackmon\urlshortener\domain\service\UrlShorteningServiceTest.java
+C:\workspaces\cSchwabAssignment\src\test\java\com\wgblackmon\urlshortener\infrastructure\ai\ClaudeAdapterTest.java
+C:\workspaces\cSchwabAssignment\src\test\java\com\wgblackmon\urlshortener\infrastructure\persistence\ClickEventAdapterTest.java
+C:\workspaces\cSchwabAssignment\src\test\java\com\wgblackmon\urlshortener\infrastructure\persistence\OrchestrationPersistenceTest.java
+C:\workspaces\cSchwabAssignment\src\test\java\com\wgblackmon\urlshortener\infrastructure\persistence\ShortUrlAdapterTest.java
+C:\workspaces\cSchwabAssignment\src\test\java\com\wgblackmon\urlshortener\UrlShortenerApplicationTest.java
+C:\workspaces\cSchwabAssignment\src\test\java\com\wgblackmon\urlshortener\web\controller\OrchestrationControllerTest.java
+C:\workspaces\cSchwabAssignment\src\test\java\com\wgblackmon\urlshortener\web\controller\RedirectControllerTest.java
+C:\workspaces\cSchwabAssignment\src\test\java\com\wgblackmon\urlshortener\web\controller\UrlShortenerControllerTest.java
