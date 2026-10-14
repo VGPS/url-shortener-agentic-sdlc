@@ -96,15 +96,19 @@ public class AppConfig {
     /**
      * Wires the SdlcOrchestrationService — the top-level domain service implementing
      * both ConductOrchestrationUseCase and QueryOrchestrationUseCase.
+     *
+     * @param approvalPollMs  how often (ms) to poll the DB for a human approval response.
+     *                        Defaults to 10 seconds in production; test configs override to ~200 ms.
      */
     @Bean
     public SdlcOrchestrationService sdlcOrchestrationService(OrchestrationRunPort runPort,
                                                               ApprovalPort approvalPort,
                                                               PhaseExecutor phaseExecutor,
                                                               DependencyGraphFactory graphFactory,
-                                                              Executor orchestrationExecutor) {
-        log.debug("sdlcOrchestrationService() | wiring");
-        return new SdlcOrchestrationService(runPort, approvalPort, phaseExecutor, graphFactory, orchestrationExecutor);
+                                                              Executor orchestrationExecutor,
+                                                              @Value("${aihealthcare.orchestration.approval-poll-ms:10000}") long approvalPollMs) {
+        log.debug("sdlcOrchestrationService() | approvalPollMs={}", approvalPollMs);
+        return new SdlcOrchestrationService(runPort, approvalPort, phaseExecutor, graphFactory, orchestrationExecutor, approvalPollMs);
     }
 
     /**

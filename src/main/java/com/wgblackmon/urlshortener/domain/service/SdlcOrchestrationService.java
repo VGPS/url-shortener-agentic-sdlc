@@ -64,31 +64,43 @@ public class SdlcOrchestrationService implements ConductOrchestrationUseCase, Qu
 
     private static final RetryPolicy DEFAULT_RETRY = RetryPolicy.defaultPolicy();
 
-    /** Polling interval (ms) while waiting for human approval. */
-    private static final long APPROVAL_POLL_INTERVAL_MS = 10_000;
-
     /** Maximum polling duration before timing out an approval (30 minutes). */
     private static final long APPROVAL_TIMEOUT_MS = 30 * 60 * 1_000;
 
-    private final OrchestrationRunPort runPort;
-    private final ApprovalPort         approvalPort;
-    private final PhaseExecutor        phaseExecutor;
+    private final OrchestrationRunPort   runPort;
+    private final ApprovalPort           approvalPort;
+    private final PhaseExecutor          phaseExecutor;
     private final DependencyGraphFactory graphFactory;
-    private final Executor             asyncExecutor;
+    private final Executor               asyncExecutor;
+
+    /** Polling interval (ms) while waiting for human approval. Override in tests for speed. */
+    private final long approvalPollIntervalMs;
 
     /** Safe-stop flag — set via REST API to halt execution between phases. */
     private volatile boolean safeStopped = false;
 
+    /** Production constructor — uses the default 10-second approval poll interval. */
     public SdlcOrchestrationService(OrchestrationRunPort runPort,
                                     ApprovalPort approvalPort,
                                     PhaseExecutor phaseExecutor,
                                     DependencyGraphFactory graphFactory,
                                     Executor asyncExecutor) {
-        this.runPort       = runPort;
-        this.approvalPort  = approvalPort;
-        this.phaseExecutor = phaseExecutor;
-        this.graphFactory  = graphFactory;
-        this.asyncExecutor = asyncExecutor;
+        this(runPort, approvalPort, phaseExecutor, graphFactory, asyncExecutor, 10_000L);
+    }
+
+    /** Full constructor — allows tests to inject a shorter poll interval. */
+    public SdlcOrchestrationService(OrchestrationRunPort runPort,
+                                    ApprovalPort approvalPort,
+                                    PhaseExecutor phaseExecutor,
+                                    DependencyGraphFactory graphFactory,
+                                    Executor asyncExecutor,
+                                    long approvalPollIntervalMs) {
+        this.runPort                = runPort;
+        this.approvalPort           = approvalPort;
+        this.phaseExecutor          = phaseExecutor;
+        this.graphFactory           = graphFactory;
+        this.asyncExecutor          = asyncExecutor;
+        this.approvalPollIntervalMs = approvalPollIntervalMs;
     }
 
     // ── ConductOrchestrationUseCase ───────────────────────────────────────
@@ -294,7 +306,7 @@ public class SdlcOrchestrationService implements ConductOrchestrationUseCase, Qu
 
         long deadline = System.currentTimeMillis() + APPROVAL_TIMEOUT_MS;
         while (System.currentTimeMillis() < deadline) {
-            try { Thread.sleep(APPROVAL_POLL_INTERVAL_MS); } catch (InterruptedException e) {
+            try { Thread.sleep(approvalPollIntervalMs); } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 return false;
             }
