@@ -106,7 +106,7 @@ public class AppConfig {
                                                               PhaseExecutor phaseExecutor,
                                                               DependencyGraphFactory graphFactory,
                                                               Executor orchestrationExecutor,
-                                                              @Value("${aihealthcare.orchestration.approval-poll-ms:10000}") long approvalPollMs) {
+                                                              @Value("${urlshortener.orchestration.approval-poll-ms:10000}") long approvalPollMs) {
         log.debug("sdlcOrchestrationService() | approvalPollMs={}", approvalPollMs);
         return new SdlcOrchestrationService(runPort, approvalPort, phaseExecutor, graphFactory, orchestrationExecutor, approvalPollMs);
     }

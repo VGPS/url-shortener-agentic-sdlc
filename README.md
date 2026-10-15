@@ -147,8 +147,6 @@ spring:
 urlshortener:
   base-url: ${BASE_URL:http://localhost:8080}
   code-length: 6
-
-aihealthcare:
   orchestration:
     approval-timeout-minutes: ${APPROVAL_TIMEOUT_MINUTES:30}
     max-retry-attempts: 3

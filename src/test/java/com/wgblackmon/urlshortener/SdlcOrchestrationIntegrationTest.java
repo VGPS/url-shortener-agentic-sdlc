@@ -43,7 +43,7 @@ import static org.mockito.Mockito.when;
  * @since   2026-10-14
  * @updated 2026-10-14
  */
-@SpringBootTest(properties = "aihealthcare.orchestration.approval-poll-ms=200")
+@SpringBootTest(properties = "urlshortener.orchestration.approval-poll-ms=200")
 class SdlcOrchestrationIntegrationTest {
 
     @MockBean
